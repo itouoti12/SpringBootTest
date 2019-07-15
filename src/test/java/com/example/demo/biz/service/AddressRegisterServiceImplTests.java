@@ -59,6 +59,18 @@ public class AddressRegisterServiceImplTests {
             }
         };
 
+        Set<Address> params1 = new HashSet();
+        params1.add(Address.builder()
+                .address("fashion 109")
+                .district("Shibuya")
+                .build());
+        params1.add(Address.builder()
+                .address("salary 999")
+                .district("Shinbashi")
+                .build());
+
+
+
         //WHEN
         int actual = target.addressRegister(params);
 
@@ -81,7 +93,6 @@ public class AddressRegisterServiceImplTests {
                 .phone("01202002002")
                 .lastUpdate(LocalDateTime.of(2014, 12, 11, 1, 1))
                 .build()));
-
 
         //WHEN
         int actual = target.addressRegister(params);

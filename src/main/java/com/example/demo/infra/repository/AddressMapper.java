@@ -20,7 +20,8 @@ public interface AddressMapper {
             "last_update" +
             ")" +
             "VALUES (" +
-            "address_address_id_seq.NEXTVAL," +
+//            "address_address_id_seq.NEXTVAL," +
+            "#{address.addressId}," +
             "#{address.address}," +
             "#{address.address2}," +
             "#{address.district}," +
@@ -29,7 +30,11 @@ public interface AddressMapper {
             "#{address.phone}," +
             "#{address.lastUpdate}" +
             ")")
-    @Options(useGeneratedKeys = true, keyColumn = "address_id", keyProperty = "address.addressId")
+    //@Options(useGeneratedKeys = true, keyColumn = "address_id", keyProperty = "address.addressId")
+    @SelectKey(statement = "SELECT address_address_id_seq.NEXTVAL",
+            keyProperty = "address.addressId",
+            before = true,
+            resultType = Integer.class)
     void save(@Param("address") Address address);
 
     @Select("SELECT * FROM address WHERE city_id = #{cityId}")
