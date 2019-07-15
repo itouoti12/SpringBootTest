@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+
+logging:
+  level:
+    org:
+      springframework: WARN
+    com:
+      example:
+        demo:
+          infra:
+            repository: DEBUG
+
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+
